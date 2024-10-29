@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="header">
+    <h2 class="heading">Edit Book</h2>
+  </div>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+      <mat-error *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author">
+      <mat-error *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched">Author is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn">
+      <mat-error *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched">ISBN is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Year</mat-label>
+      <input matInput [matDatepicker]="yearPicker" formControlName="year" placeholder="Enter year">
+      <mat-datepicker-toggle matSuffix [for]="yearPicker"></mat-datepicker-toggle>
+      <mat-datepicker #yearPicker startView="multi-year" [startAt]="startDate" (yearSelected)="chosenYearHandler($event, yearPicker)"></mat-datepicker>
+      <mat-error *ngIf="bookForm.get('year')?.invalid && bookForm.get('year')?.touched">Year is required</mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button type="button" mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid">Update</button>
+    </div>
+  </form>
+</div>

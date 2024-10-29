@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="heading">Add Book</div>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="form">
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter title">
+      <mat-error *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">Title is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" placeholder="Enter author">
+      <mat-error *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched">Author is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn" placeholder="Enter ISBN">
+      <mat-error *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched">ISBN is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Year</mat-label>
+      <input matInput formControlName="year" placeholder="Enter year (yyyy-MM-dd)">
+      <mat-error *ngIf="bookForm.get('year')?.invalid && bookForm.get('year')?.touched">Year is required (yyyy-MM-dd)</mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button type="button" mat-raised-button color="primary" routerLink="/books" >Cancel</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid">Add</button>
+    </div>
+  </form>
+</div>

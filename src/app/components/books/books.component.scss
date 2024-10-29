@@ -1,0 +1,19 @@
+.container {
+  margin: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.btn-delete:hover {
+  background-color: #f7b0b0;
+  opacity: .3;
+}
